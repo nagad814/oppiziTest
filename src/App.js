@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Button } from "react-native";
+import { View, Button, Text } from "react-native";
 export function formatTime(time) {
   return time;
 }
@@ -19,6 +19,14 @@ class App extends Component {
         <View>
           <Button title="resume" onPress={this.resumeTimer} />
           <Button title="reset" onPress={this.resetTimer} />
+        </View>
+      );
+    }
+    if (status === "Running") {
+      return (
+        <View>
+          <Button title="stop" onPress={this.resumeTimer} />
+          <Button title="lap" onPress={this.resetTimer} />
         </View>
       );
     }
@@ -59,7 +67,12 @@ class App extends Component {
   };
   onLap = () => {};
   render() {
-    return <View />;
+    return (
+      <View>
+        {this.renderButtons()}
+        <Text testID="displayedTime">00:55.00</Text>
+      </View>
+    );
   }
 }
 
